@@ -91,7 +91,7 @@ class Results {
   String? releaseDate;
   String? title;
   bool? video;
-  double? voteAverage;
+ dynamic voteAverage;
   int? voteCount;
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

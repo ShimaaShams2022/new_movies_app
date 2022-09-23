@@ -9,7 +9,7 @@ class ApiManager{
 
 static Future<MoviesPopularResponse>getMoviesPopular()async{
   var uri=Uri.https(BASE_URL, '/3/movie/popular',
-      {'apiKey':API_KEY,'language':'en-US','page':1});
+      {'api_key':API_KEY,'language':'en-US','page':'1'});
   var response=await http.get(uri);
   var json=jsonDecode(response.body);
   MoviesPopularResponse popularMoviesResponse=MoviesPopularResponse.fromJson(json);
