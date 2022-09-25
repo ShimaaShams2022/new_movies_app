@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_movies_app/api/api_manager.dart';
-import '../api/model/MoviesPopularResponse.dart';
+import '../../api/model/MoviesPopularResponse.dart';
 class HomeScreen extends StatelessWidget {
    HomeScreen({Key? key}) : super(key: key);
   static const String routeName='home';
