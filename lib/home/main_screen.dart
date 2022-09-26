@@ -29,7 +29,7 @@ class _HomeScreenState extends State<MainScreen> {
           },
           items: [
             BottomNavigationBarItem(
-                backgroundColor:Colors.grey,
+                backgroundColor:Color(0xFF1A1A1A),
                 icon: ImageIcon(
                   AssetImage('assets/images/homeicon.png'),
                 ),
