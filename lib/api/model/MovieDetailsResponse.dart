@@ -1,31 +1,31 @@
 /// adult : false
-/// backdrop_path : "/4OvECpMuFauCpNAR94BIEPNgcmX.jpg"
+/// backdrop_path : "/2RSirqZG949GuRwN38MYCIGG4Od.jpg"
 /// belongs_to_collection : null
-/// budget : 0
-/// genres : []
-/// homepage : ""
-/// id : 1028763
-/// imdb_id : null
-/// original_language : "zh"
-/// original_title : "巨星养成记"
-/// overview : ""
-/// popularity : 0.0
-/// poster_path : "/jIglNwR2XOo0yvMVZ2hdkV5cC4t.jpg"
-/// production_companies : []
-/// production_countries : [{"iso_3166_1":"HK","name":"Hong Kong"}]
-/// release_date : "2022-09-26"
-/// revenue : 0
-/// runtime : 0
-/// spoken_languages : []
+/// budget : 3000000
+/// genres : [{"id":53,"name":"Thriller"}]
+/// homepage : "https://www.lionsgate.com/movies/fall"
+/// id : 985939
+/// imdb_id : "tt15325794"
+/// original_language : "en"
+/// original_title : "Fall"
+/// overview : "For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights"
+/// popularity : 7087.515
+/// poster_path : "/spCAxD99U1A6jsiePFoqdEcY0dG.jpg"
+/// production_companies : [{"id":1632,"logo_path":"/cisLn1YAUuptXVBa0xjq7ST9cH0.png","name":"Lionsgate","origin_country":"US"},{"id":11053,"logo_path":null,"name":"Capstone Pictures","origin_country":"US"},{"id":125401,"logo_path":null,"name":"BuzzFeed Studios","origin_country":"US"},{"id":155758,"logo_path":null,"name":"Tea Shop Productions","origin_country":""},{"id":179831,"logo_path":null,"name":"Capstone Studios","origin_country":""}]
+/// production_countries : [{"iso_3166_1":"GB","name":"United Kingdom"},{"iso_3166_1":"US","name":"United States of America"}]
+/// release_date : "2022-08-11"
+/// revenue : 11900000
+/// runtime : 107
+/// spoken_languages : [{"english_name":"English","iso_639_1":"en","name":"English"}]
 /// status : "Released"
-/// tagline : ""
-/// title : "巨星养成记"
+/// tagline : "Fear reaches new heights."
+/// title : "Fall"
 /// video : false
-/// vote_average : 0.0
-/// vote_count : 0
+/// vote_average : 7.438
+/// vote_count : 1007
 
-class LatestMoviesResponse {
-  LatestMoviesResponse({
+class MovieDetailsResponse {
+  MovieDetailsResponse({
       this.adult, 
       this.backdropPath, 
       this.belongsToCollection, 
@@ -50,17 +50,9 @@ class LatestMoviesResponse {
       this.title, 
       this.video, 
       this.voteAverage, 
-      this.voteCount,
-      this.code,
-      this.message,
-      this.success
+      this.voteCount,});
 
-  });
-
-  LatestMoviesResponse.fromJson(dynamic json) {
-    code=json['status_code'];
-    message=json['status_message'];
-    success=json['success'];
+  MovieDetailsResponse.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     belongsToCollection = json['belongs_to_collection'];
@@ -68,7 +60,7 @@ class LatestMoviesResponse {
     if (json['genres'] != null) {
       genres = [];
       json['genres'].forEach((v) {
-        genres?.add(v);
+        genres?.add(Genres.fromJson(v));
       });
     }
     homepage = json['homepage'];
@@ -82,7 +74,7 @@ class LatestMoviesResponse {
     if (json['production_companies'] != null) {
       productionCompanies = [];
       json['production_companies'].forEach((v) {
-       productionCompanies?.add(v);
+        productionCompanies?.add(ProductionCompanies.fromJson(v));
       });
     }
     if (json['production_countries'] != null) {
@@ -97,7 +89,7 @@ class LatestMoviesResponse {
     if (json['spoken_languages'] != null) {
       spokenLanguages = [];
       json['spoken_languages'].forEach((v) {
-        spokenLanguages?.add(v);
+        spokenLanguages?.add(SpokenLanguages.fromJson(v));
       });
     }
     status = json['status'];
@@ -111,30 +103,27 @@ class LatestMoviesResponse {
   String? backdropPath;
   dynamic belongsToCollection;
   int? budget;
-  List<dynamic>? genres;
+  List<Genres>? genres;
   String? homepage;
   int? id;
-  dynamic imdbId;
+  String? imdbId;
   String? originalLanguage;
   String? originalTitle;
   String? overview;
   double? popularity;
   String? posterPath;
-  List<dynamic>? productionCompanies;
+  List<ProductionCompanies>? productionCompanies;
   List<ProductionCountries>? productionCountries;
   String? releaseDate;
   int? revenue;
   int? runtime;
-  List<dynamic>? spokenLanguages;
+  List<SpokenLanguages>? spokenLanguages;
   String? status;
   String? tagline;
   String? title;
   bool? video;
   double? voteAverage;
   int? voteCount;
-  int? code;
-  String? message;
-  bool? success;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -176,8 +165,37 @@ class LatestMoviesResponse {
 
 }
 
-/// iso_3166_1 : "HK"
-/// name : "Hong Kong"
+/// english_name : "English"
+/// iso_639_1 : "en"
+/// name : "English"
+
+class SpokenLanguages {
+  SpokenLanguages({
+      this.englishName, 
+      this.iso6391, 
+      this.name,});
+
+  SpokenLanguages.fromJson(dynamic json) {
+    englishName = json['english_name'];
+    iso6391 = json['iso_639_1'];
+    name = json['name'];
+  }
+  String? englishName;
+  String? iso6391;
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['english_name'] = englishName;
+    map['iso_639_1'] = iso6391;
+    map['name'] = name;
+    return map;
+  }
+
+}
+
+/// iso_3166_1 : "GB"
+/// name : "United Kingdom"
 
 class ProductionCountries {
   ProductionCountries({
@@ -194,6 +212,64 @@ class ProductionCountries {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['iso_3166_1'] = iso31661;
+    map['name'] = name;
+    return map;
+  }
+
+}
+
+/// id : 1632
+/// logo_path : "/cisLn1YAUuptXVBa0xjq7ST9cH0.png"
+/// name : "Lionsgate"
+/// origin_country : "US"
+
+class ProductionCompanies {
+  ProductionCompanies({
+      this.id, 
+      this.logoPath, 
+      this.name, 
+      this.originCountry,});
+
+  ProductionCompanies.fromJson(dynamic json) {
+    id = json['id'];
+    logoPath = json['logo_path'];
+    name = json['name'];
+    originCountry = json['origin_country'];
+  }
+  int? id;
+  String? logoPath;
+  String? name;
+  String? originCountry;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
+    map['logo_path'] = logoPath;
+    map['name'] = name;
+    map['origin_country'] = originCountry;
+    return map;
+  }
+
+}
+
+/// id : 53
+/// name : "Thriller"
+
+class Genres {
+  Genres({
+      this.id, 
+      this.name,});
+
+  Genres.fromJson(dynamic json) {
+    id = json['id'];
+    name = json['name'];
+  }
+  int? id;
+  String? name;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = id;
     map['name'] = name;
     return map;
   }
